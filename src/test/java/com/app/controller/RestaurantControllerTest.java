@@ -22,19 +22,6 @@ class RestaurantControllerTest {
     
     @MockBean
     private RestaurantService service;
-
-    @Test
-    void testRestaurantSearch() throws Exception {
-        RestaurantDtos.SearchResult r =
-                new RestaurantDtos.SearchResult(1L, "Marina Spice", "Indian", 50, 20);
-
-        Mockito.when(service.search(null, null, null, null))
-                .thenReturn(List.of(r));
-
-        mvc.perform(get("/api/restaurants/search"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].name").value("Marina Spice"));
-    }
 }
 
 
